@@ -4,54 +4,64 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-	<title>Arkore - Twitch</title>
+	<title>Blog</title>
 
 	<style>
-		/* Typography */
-		:root {
-			font-size: 12px;
-		}
+		html { font-size: 12px; }
 		@media (min-width: 320px) and (max-width: 1200px) {
-			:root {
+			html {
 				font-size: calc(12px + (28 - 12) * ((100vw - 320px) / (1200 - 320)));
 			}
 		}
 		@media (min-width: 1200px) {
-			:root {
-				font-size: 28px;
-			}
+			html { font-size: 28px; }
 		}
-
-		html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-		body {
-			line-height: 1.4;
-			font-family: Arial, Sans-serif;
-			text-rendering: optimizeLegibility;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			margin: 1em auto;
-			max-width: 30em;
-			color: #efeff1;
-			background: #0e0e10;
-		}
-
+		body { color: #efeff1; background:#0e0e10; font-family: Arial, Sans-serif; line-height: 1.4; }
+		body { max-width: 30em; margin: 1em auto; }
 		a,a:link { color: #bf94ff; text-decoration: none; }
 		a:hover,a:active,a:visited { color: #a970ff; }
 		a:hover { text-decoration: underline; }
-
 		img { max-width: 100%; }
+		hr { border: 3px solid rgba(0, 0, 0, 0.05); border-radius: 0.5em; margin: 3em 0; }
+		h1 { font-size: calc(1rem * 2); }
+		h1 a {
+			display: block;
+			padding-top: calc(451em / (28 * 2)); /* 840 x 401 (+50 extra spacing) */
+			background: url(index.jpg) top center/100% auto no-repeat;
+		}
+		body > div { /* extra styling [here] or for user */ }
 
-		hr {
-			border: 3px solid rgba(0, 0, 0, 0.05);
-			border-radius: 0.5em;
-			margin: 3em 0;
+
+		div.toolbar {
+			z-index: 1;
+			position: fixed; 
+			right: -60px;
+			top: 50%;
+			margin-top: -3em;
+			transform: rotate(90deg);
+		}
+		div.toolbar > button {
+			display: block;
+			float: left;
+			min-width: 50px;
+			min-height: 50px;
+			padding: 0.2em 0.4em;
+			border-radius: 0.2em;
+			background: rgba(15, 13, 22,0.8);
+			color: #eee;
+			font-size: 2rem;
+			border: none;
+			margin: 0.1em;
+			border-width: 2px;
+			border-style: outset;
+			border-color: buttonborder;
+			border-image: initial;
 		}
 	</style>
 </head>
-<body>
+<body style="background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
 
-	<h1>Blog</h1>
-
+	<h1><a href="https://www.twitch.tv/arkore" title="Arkore's Twitch Stream">Arkore - Twitch</a></h1>
 	<p><b>July 12</b>, created <b><a href="https://drive.google.com/file/d/1gFull2pdkZZg9Q4uwp8MMW7jQB-tACyv/view?usp=sharing">autoexec.cfg</a></b></p>
 	<ul>
 		<li> for Team Fortress 2</li>
@@ -180,6 +190,16 @@
 		<li> for my twitch page</li>
 	</ul>
 	<p>created <b><a href="https://drive.google.com/file/d/17KIdUkHOSgw_gXmOE6lkEBbavFqRFQ2U/view?usp=sharing">first dance STREAM</a></b> (8 min.)</p>
-
 </body>
+<script>
+document.body.innerHTML = document.body.innerHTML + `
+<div class="toolbar">
+    <button tabindex="2" type="button" onclick="window.scrollTo(0,0);">⇤</button>
+    <button tabindex="3" type="button" onclick="window.scrollTo(0,window.pageYOffset-window.innerHeight);">⇠</button>
+    <button tabindex="4" type="button" onclick="window.scrollTo(0,window.pageYOffset+window.innerHeight);">⇢</button>
+    <button tabindex="5" type="button" onclick="window.scrollTo(0,9999999);">⇥</button>
+</div>
+`;
+</script>
+<script>document.body.innerHTML = '<div>' + document.body.innerHTML + '</div>';</script>
 </html>
