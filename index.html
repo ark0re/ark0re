@@ -18,9 +18,10 @@
 		}
 		body { color: #efeff1; background:#0e0e10; font-family: Arial, Sans-serif; line-height: 1.4; }
 		body { max-width: 30em; margin: 1em auto; padding: 0 2em 0 1em; }
-		a,a:link { color: #bf94ff; text-decoration: none; }
-		a:hover,a:active,a:visited { color: #a970ff; }
-		a:hover { text-decoration: underline; }
+		a[href],a[href]:link { color: #bf94ff; text-decoration: none; }
+		a[href]:hover,a[href]:active,a[href]:visited { color: #a970ff; }
+		a[href]:hover { text-decoration: underline; }
+		a:target { color: limegreen; }
 		img { max-width: 100%; }
 		hr { border: 3px solid rgba(0, 0, 0, 0.05); border-radius: 0.5em; margin: 3em 0; }
 		h1 { font-size: calc(1rem * 2); }
@@ -62,6 +63,8 @@
 <body style="background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
 
 	<h1><a href="https://www.twitch.tv/arkore" title="Arkore's Twitch Stream">Arkore - Twitch</a></h1>
+	<div style="text-align:center;margin:1em 0">&nbsp;</div>
+
 	<p><b>July 12</b>, created <b><a href="https://drive.google.com/file/d/1gFull2pdkZZg9Q4uwp8MMW7jQB-tACyv/view?usp=sharing">autoexec.cfg</a></b></p>
 	<ul>
 		<li> for Team Fortress 2</li>
@@ -182,14 +185,20 @@
 
 	<p><b>July 25</b>, created <b><a href="https://drive.google.com/file/d/1v3UKuKQ8kjBRk0ue0AyKipr1HgJpbfy4/view?usp=sharing">ImageCropWebcam command</a></b> (<a href="https://drive.google.com/file/d/1Q0ZtZ79_yFJTGPoxV0gpMuQM9AMKgyUW/view?usp=sharing">bat</a>)</p>
 	<ul>
-		<li> for ffmpeg.exe</li>
+		<li>for ffmpeg.exe</li>
 	</ul>
 	<p>created <b><a href="https://drive.google.com/file/d/1Go9TSc4TXt6LSRqfMoO4XU6yG-aYDGmo/view?usp=sharing">stream offline banner</a></b></p>
 	<p>created <b><a href="https://drive.google.com/file/d/13aKHqBvEjUdhuucyv6YcDB6AtE48CAD9/view?usp=sharing">first graphic panel</a></b> ("ArkCard?" #1</p>
 	<ul>
 		<li> for my twitch page</li>
 	</ul>
-	<p>created <b><a href="https://drive.google.com/file/d/17KIdUkHOSgw_gXmOE6lkEBbavFqRFQ2U/view?usp=sharing">first dance STREAM</a></b> (8 min.)</p>
+	<p>created <b><a href="https://youtu.be/obsQ7GNM8cM">first dance STREAM</a></b> (8 min.)</p>
+
+	<p><b>July 26</b>, purchased <b><a href="https://drive.google.com/file/d/14QvNGVFsadCyKAC61DlYsBiu04H5ZZhN/view?usp=sharing">masks</a></b></p>
+	<ul>
+		<li> for dance and acts</li>
+	</ul>
+
 	<p style="text-align:center;margin:2em 0">You've reached the end of this page.</p>
 </body>
 <script>
@@ -203,4 +212,15 @@ document.body.innerHTML = document.body.innerHTML + `
 `;
 </script>
 <script>document.body.innerHTML = '<div>' + document.body.innerHTML + '</div>';</script>
+<script>
+var u = null;
+document.querySelectorAll('b').forEach(function(el) {
+	if (el.textContent.match(/^Jan|Feb|Mar|Apr|May|June|July|Aug|Sept|Oct|Nov|Dec/)) {
+		u = el;
+	}
+});
+u.innerHTML = '<a name="end">'+u.innerHTML+'</a>';
+var updated = u.textContent.trim();
+document.body.querySelector('h1 + div').innerHTML = '(<a href="#end">see '+updated+'</a>)';
+</script>
 </html>
