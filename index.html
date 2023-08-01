@@ -63,7 +63,7 @@
 <body style="background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
 
 	<h1><a href="https://www.twitch.tv/arkore" title="Arkore's Twitch Stream">Arkore - Twitch</a></h1>
-	<div style="text-align:center;margin:1em 0">&nbsp;</div>
+	<div style="text-align:center;margin:1em 0;color:#C93">&nbsp;</div>
 
 	<p><b>July 12</b>, created <b><a href="https://drive.google.com/file/d/1gFull2pdkZZg9Q4uwp8MMW7jQB-tACyv/view?usp=sharing">autoexec.cfg</a></b></p>
 	<ul>
@@ -220,8 +220,34 @@ document.querySelectorAll('b').forEach(function(el) {
 	}
 });
 u.innerHTML = '<a name="end">'+u.innerHTML+'</a>';
-var updated = u.textContent.trim();
-document.querySelector('h1 + div').innerHTML = '(<a href="#end">update '+updated+'</a>)';
+
+var t = new Date(u.textContent.trim()+', '+(new Date()).getFullYear());
+document.querySelector('h1 + div').innerHTML = '(updated '+timeSince(t)+' ago)';
 document.querySelector('button[tabindex="5"]').onclick = function() { location.href = '#end'; }
+
+function timeSince(date) {
+	var seconds = Math.floor((new Date() - date) / 1000);
+	var interval = seconds / 31536000;
+	if (interval > 1) {
+		return Math.floor(interval) + " years";
+	}
+	interval = seconds / 2592000;
+	if (interval > 1) {
+		return Math.floor(interval) + " months";
+	}
+	interval = seconds / 86400;
+	if (interval > 1) {
+		return Math.floor(interval) + " days";
+	}
+	interval = seconds / 3600;
+	if (interval > 1) {
+		return Math.floor(interval) + " hours";
+	}
+	interval = seconds / 60;
+	if (interval > 1) {
+		return Math.floor(interval) + " min.";
+	}
+	return Math.floor(seconds) + " sec.";
+}
 </script>
 </html>
