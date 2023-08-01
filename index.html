@@ -221,6 +221,7 @@ document.querySelectorAll('b').forEach(function(el) {
 });
 u.innerHTML = '<a name="end">'+u.innerHTML+'</a>';
 var updated = u.textContent.trim();
-document.body.querySelector('h1 + div').innerHTML = '(<a href="#end">see '+updated+'</a>)';
+document.querySelector('h1 + div').innerHTML = '(<a href="#end">update '+updated+'</a>)';
+document.querySelector('button[tabindex="5"]').onclick = function() { location.href = '#end'; }
 </script>
 </html>
