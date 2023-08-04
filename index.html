@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
 	<title>Arkore - Twitch</title>
-
 	<style>
 		html { font-size: 12px; }
 		@media (min-width: 320px) and (max-width: 1200px) {
@@ -31,7 +30,6 @@
 			background: url(index.jpg) top center/100% auto no-repeat;
 		}
 		body > div { /* extra styling [here] or for user */ }
-
 
 		div.toolbar {
 			z-index: 1;
@@ -65,7 +63,6 @@
 	</style>
 </head>
 <body style="background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
-
 	<h1><a href="https://www.twitch.tv/arkore" title="Arkore's Twitch Stream">Arkore - Twitch</a></h1>
 	<div style="text-align:center;margin:1em 0;color:#C93">&nbsp;</div>
 
@@ -221,55 +218,54 @@
 	<p><b>August 1</b>, updated <b><a href="https://ark0re.github.io/log/">stream log</a></b></p>
 
 	<p style="text-align:center;margin:2em 0">You've reached the end of this page.</p>
-
 </body>
 <script>
-document.body.innerHTML = document.body.innerHTML + `
-<div class="toolbar">
-    <button tabindex="2" type="button" onclick="window.scrollTo(0,0);">⇤</button>
-    <button tabindex="3" type="button" onclick="window.scrollTo(0,window.pageYOffset-window.innerHeight);">⇠</button>
-    <button tabindex="4" type="button" onclick="window.scrollTo(0,window.pageYOffset+window.innerHeight);">⇢</button>
-    <button tabindex="5" type="button" onclick="window.scrollTo(0,9999999);">⇥</button>
-</div>
-`;
+	document.body.innerHTML = document.body.innerHTML + `
+	<div class="toolbar">
+	    <button tabindex="2" type="button" onclick="window.scrollTo(0,0);">⇤</button>
+	    <button tabindex="3" type="button" onclick="window.scrollTo(0,window.pageYOffset-window.innerHeight);">⇠</button>
+	    <button tabindex="4" type="button" onclick="window.scrollTo(0,window.pageYOffset+window.innerHeight);">⇢</button>
+	    <button tabindex="5" type="button" onclick="window.scrollTo(0,9999999);">⇥</button>
+	</div>
+	`;
 </script>
 <script>document.body.innerHTML = '<div>' + document.body.innerHTML + '</div>';</script>
 <script>
-var u = null;
-document.querySelectorAll('b').forEach(function(el) {
-	if (el.textContent.match(/^Jan|Feb|Mar|Apr|May|June|July|Aug|Sept|Oct|Nov|Dec/)) {
-		u = el;
+	var u = null;
+	document.querySelectorAll('b').forEach(function(el) {
+		if (el.textContent.match(/^Jan|Feb|Mar|Apr|May|June|July|Aug|Sept|Oct|Nov|Dec/)) {
+			u = el;
+		}
+	});
+	u.innerHTML = '<a name="end">'+u.innerHTML+'</a>';
+	
+	var t = new Date(u.textContent.trim()+', '+(new Date()).getFullYear());
+	document.querySelector('h1 + div').innerHTML = '(updated '+timeSince(t)+' ago)';
+	document.querySelector('button[tabindex="5"]').onclick = function() { location.href = '#end'; }
+	
+	function timeSince(date) {
+		var seconds = Math.floor((new Date() - date) / 1000);
+		var interval = seconds / 31536000;
+		if (interval > 1) {
+			return Math.floor(interval) + " years";
+		}
+		interval = seconds / 2592000;
+		if (interval > 1) {
+			return Math.floor(interval) + " months";
+		}
+		interval = seconds / 86400;
+		if (interval > 1) {
+			return Math.floor(interval) + " days";
+		}
+		interval = seconds / 3600;
+		if (interval > 1) {
+			return Math.floor(interval) + " hours";
+		}
+		interval = seconds / 60;
+		if (interval > 1) {
+			return Math.floor(interval) + " min.";
+		}
+		return Math.floor(seconds) + " sec.";
 	}
-});
-u.innerHTML = '<a name="end">'+u.innerHTML+'</a>';
-
-var t = new Date(u.textContent.trim()+', '+(new Date()).getFullYear());
-document.querySelector('h1 + div').innerHTML = '(updated '+timeSince(t)+' ago)';
-document.querySelector('button[tabindex="5"]').onclick = function() { location.href = '#end'; }
-
-function timeSince(date) {
-	var seconds = Math.floor((new Date() - date) / 1000);
-	var interval = seconds / 31536000;
-	if (interval > 1) {
-		return Math.floor(interval) + " years";
-	}
-	interval = seconds / 2592000;
-	if (interval > 1) {
-		return Math.floor(interval) + " months";
-	}
-	interval = seconds / 86400;
-	if (interval > 1) {
-		return Math.floor(interval) + " days";
-	}
-	interval = seconds / 3600;
-	if (interval > 1) {
-		return Math.floor(interval) + " hours";
-	}
-	interval = seconds / 60;
-	if (interval > 1) {
-		return Math.floor(interval) + " min.";
-	}
-	return Math.floor(seconds) + " sec.";
-}
 </script>
 </html>
