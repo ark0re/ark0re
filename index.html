@@ -16,7 +16,6 @@
 			html { font-size: 28px; }
 		}
 		body { color: #efeff1; background:#0e0e10; font-family: Arial, Sans-serif; line-height: 1.4; }
-		body { max-width: 30em; margin: 1em auto; padding: 0 2em 0 1em; }
 		a[href],a[href]:link,a[href]:visited { color: #bf94ff; text-decoration: none; }
 		a[href]:hover,a[href]:active { color: #5f6; }
 		a[href]:hover { text-decoration: underline; }
@@ -26,19 +25,35 @@
 		h1 { font-size: calc(1rem * 2); }
 		h1 a {
 			display: block;
-			padding-top: calc(451em / (28 * 2)); /* 840 x 401 (+50 extra spacing) */
+			padding-top: calc(336em / (28 * 2)); /* 616 x 286 (+50 extra spacing) */
 			background: url(index.jpg) top center/100% auto no-repeat;
 		}
 		code { color: #6c6; background: #080F08; }
-		body > div { /* extra styling [here] or for user */ }
+		html::-webkit-scrollbar { width: 16px; height: 16px; }
+		html::-webkit-scrollbar-thumb { background: #426; border-radius: 16px; box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25); }
+		html::-webkit-scrollbar-track { background: #181122; }
 
-		div.toolbar {
+		.wrapper {
+			max-width: 22em;
+			margin: 0 auto;
+			padding: 0 2em 0 1em;
+			position: relative;
+		}
+		div#extra {
 			z-index: 1;
 			position: fixed; 
-			right: -60px;
+			top: 0;
+			width: 100%;
+			height: 100vh;
+			pointer-events: none;
+		}
+		div.toolbar {
+			right: -8em;
 			top: 50%;
 			margin-top: -3em;
 			transform: rotate(90deg);
+			position: absolute;
+			pointer-events: all;
 		}
 		div.toolbar > button {
 			display: block;
@@ -57,207 +72,433 @@
 			border-color: buttonborder;
 			border-image: initial;
 		}
-
-		html::-webkit-scrollbar { width: 16px; height: 16px; }
-		html::-webkit-scrollbar-thumb { background: #426; border-radius: 16px; box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25); }
-		html::-webkit-scrollbar-track { background: #181122; }
 	</style>
 </head>
-<body style="background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
-	<h1><a href="https://www.twitch.tv/arkore" title="Arkore's Twitch Stream">Arkore - Twitch</a></h1>
-	<div style="text-align:center;margin:1em 0;color:#C93">&nbsp;</div>
+<body>
+	<div class="wrapper" style="background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
+		<h1><a href="https://www.twitch.tv/arkore" title="Arkore's Twitch Stream">Arkore - Twitch</a></h1>
+		<div style="text-align:center;margin:1em 0;color:#C93">&nbsp;</div>
 
-	<p>found <b><a href="https://www.youtube.com/watch?v=I5CzBJK4dHo">SoundBoard over Mic solution</a></b></p>
+		<p>found <b><a href="https://www.youtube.com/watch?v=I5CzBJK4dHo">SoundBoard over Mic solution</a></b></p>
 
-	<p><b>July 12</b>, created <b><a href="https://drive.google.com/file/d/1gFull2pdkZZg9Q4uwp8MMW7jQB-tACyv/view?usp=sharing">autoexec.cfg</a></b></p>
-	<ul>
-		<li> for Team Fortress 2</li>
-		<li> Use: save in \Team Fortress 2\tf\cfg\</li>
-		<li> Optionally: add under Team Fortress 2 -> General -> Launch Options: "-threads 4 -novid -nojoy -noipx -nod3d9ex"</li>
-		<li> Note: "-threads 4" if you have a quadcore PC.</li>
-	</ul>
+		<p><b>July 12</b>, created <b><a href="https://drive.google.com/file/d/1gFull2pdkZZg9Q4uwp8MMW7jQB-tACyv/view?usp=sharing">autoexec.cfg</a></b></p>
+		<ul>
+			<li> for Team Fortress 2</li>
+			<li> Use: save in \Team Fortress 2\tf\cfg\</li>
+			<li> Optionally: add under Team Fortress 2 -> General -> Launch Options: "-threads 4 -novid -nojoy -noipx -nod3d9ex"</li>
+			<li> Note: "-threads 4" if you have a quadcore PC.</li>
+		</ul>
 
-	<p><b>July 13</b>, created <b>!vote</b></p>
-	<ul>
-		<li> Use: !vote &lt;#,Title;...>
-		</li>
-		<li> !vote 1,Batman;2,Spiderman</li>
-		<li> Type 1 or 2 in chat, before 20 seconds.</li>
-	</ul>
-	<p>created <b><a href="https://drive.google.com/file/d/1ki3gklmISFsYjTYc963ricxgU-nEx2PP/view?usp=sharing">Clock.html</a></b></p>
-	<ul>
-		<li> for OBS</li>
-		<li> Use: browser source, local file [.html]</li>
-	</ul>
+		<p><b>July 13</b>, created <b>!vote</b></p>
+		<ul>
+			<li> Use: !vote &lt;#,Title;...></li>
+			<li> !vote 1,Batman;2,Spiderman</li>
+			<li> Type 1 or 2 in chat, before 20 seconds.</li>
+		</ul>
+		<p>created <b><a href="https://drive.google.com/file/d/1ki3gklmISFsYjTYc963ricxgU-nEx2PP/view?usp=sharing">Clock.html</a></b></p>
+		<ul>
+			<li> for OBS</li>
+			<li> Use: browser source, local file [.html]</li>
+		</ul>
 
-	<p><b>July 14</b>, created <b><a href="https://drive.google.com/file/d/1uDPt0ziwJzK9RDmce4FtlVmVn5K24IF7/view">list2html.exe</a></b></p>
-	<ul>
-		<li> for EditPad Pro (Tools)</li>
-		<li> Use: list2html.exe &lt;ul|ol|p|div> &lt;STDIN></li>
-		<li> list2html ul</li>
-		<li> list2html ol</li>
-		<li> list2html p</li>
-		<li> list2html div</li>
-	</ul>
+		<p><b>July 14</b>, created <b><a href="https://drive.google.com/file/d/1uDPt0ziwJzK9RDmce4FtlVmVn5K24IF7/view">list2html.exe</a></b></p>
+		<ul>
+			<li> for EditPad Pro (Tools)</li>
+			<li> Use: list2html.exe &lt;ul|ol|p|div> &lt;STDIN></li>
+			<li> list2html ul</li>
+			<li> list2html ol</li>
+			<li> list2html p</li>
+			<li> list2html div</li>
+		</ul>
 
-	<p><b>July 15</b>, created <b><a href="https://drive.google.com/file/d/1m9Qd5EJf9e6EgNr-W1RzJ-II0iRsG_eD/view">minify.exe</a></b></p>
-	<ul>
-		<li> for EditPad Pro (Tools)</li>
-		<li> Use: minify.exe &lt;css|js|html> &lt;STDIN></li>
-		<li> minify css</li>
-		<li> minify js</li>
-		<li> minify html</li>
-	</ul>
+		<p><b>July 15</b>, created <b><a href="https://drive.google.com/file/d/1m9Qd5EJf9e6EgNr-W1RzJ-II0iRsG_eD/view">minify.exe</a></b></p>
+		<ul>
+			<li> for EditPad Pro (Tools)</li>
+			<li> Use: minify.exe &lt;css|js|html> &lt;STDIN></li>
+			<li> minify css</li>
+			<li> minify js</li>
+			<li> minify html</li>
+		</ul>
 
-	<p><b>July 16</b>, created StreamTitleGenerator.html alpha</p>
-	<ul>
-		<li> for rapidly filling a new title</li>
-	</ul>
-	<p>created <b>!vote</b> UI (html/css/js)</p>
-	<ul>
-		<li> supports up to 10 options</li>
-		<li> word cloud layout</li>
-	</ul>
+		<p><b>July 16</b>, created StreamTitleGenerator.html alpha</p>
+		<ul>
+			<li> for rapidly filling a new title</li>
+		</ul>
+		<p>created <b>!vote</b> UI (html/css/js)</p>
+		<ul>
+			<li> supports up to 10 options</li>
+			<li> word cloud layout</li>
+		</ul>
 
-	<p><b>July 17</b>, updated <b><a href="https://www.twitch.tv/arkore">my twitch page</a></b></p>
+		<p><b>July 17</b>, updated <b><a href="https://www.twitch.tv/arkore">my twitch page</a></b></p>
 
-	<p><b>July 18</b>, created <b><a href="https://drive.google.com/file/d/1sW0ITio81aAhHXIX75HhU-c-v2n79BLA/view?usp=drive_link">LockTitle</a></b> (js)</p>
-	<ul>
-		<li> for User JavaScript and CSS extension</li>
-		<li> prevent websites from changing browser tab title</li>
-	</ul>
+		<p><b>July 18</b>, created <b><a href="https://drive.google.com/file/d/1sW0ITio81aAhHXIX75HhU-c-v2n79BLA/view?usp=drive_link">LockTitle</a></b> (js)</p>
+		<ul>
+			<li> for User JavaScript and CSS extension</li>
+			<li> prevent websites from changing browser tab title</li>
+		</ul>
 
-	<p>created <b><a href="https://drive.google.com/file/d/17UMst-GyTnI2cjafo-qg3YWbnt29Siau/view?usp=sharing">WebcamText.html</a></b> (html/css/js)</p>
-	<ul>
-		<li> for OBS (Window Capture)</li>
-		<li> Use: mouse scroll through text phrases.</li>
-	</ul>
+		<p>created <b><a href="https://drive.google.com/file/d/17UMst-GyTnI2cjafo-qg3YWbnt29Siau/view?usp=sharing">WebcamText.html</a></b> (html/css/js)</p>
+		<ul>
+			<li> for OBS (Window Capture)</li>
+			<li> Use: mouse scroll through text phrases.</li>
+		</ul>
 
-	<p><b>July 19</b>, setup Watching Stream</b> UI</p>
-	<ul>
-		<li> in OBS (Browser Source)</li>
-		<li> watch another stream</li>
-	</ul>
+		<p><b>July 19</b>, setup Watching Stream</b> UI</p>
+		<ul>
+			<li> in OBS (Browser Source)</li>
+			<li> watch another stream</li>
+		</ul>
 
-	<p><b>July 20</b>, setup <b><a href="https://drive.google.com/file/d/1hF4DYZ0MTTldec25K4m1Gw4PIKdtORAF/view?usp=sharing">Dual monitor articulating arm supports</a></b></p>
-	<ul>
-		<li> by Amer Mounts (previously known as DIAMOND)</li>
-		<li> replaced my two individual arms</li>
-		<li> setup extra individual arm for laptop; lowered monitor to below eye level.</li>
-		<li> updated my twitch page</li>
-	</ul>
+		<p><b>July 20</b>, setup <b><a href="https://drive.google.com/file/d/1hF4DYZ0MTTldec25K4m1Gw4PIKdtORAF/view?usp=sharing">Dual monitor articulating arm supports</a></b></p>
+		<ul>
+			<li> by Amer Mounts (previously known as DIAMOND)</li>
+			<li> replaced my two individual arms</li>
+			<li> setup extra individual arm for laptop; lowered monitor to below eye level.</li>
+			<li> updated my twitch page</li>
+		</ul>
 
-	<p><b>July 21</b>, purchased <a href="https://www.etsy.com/search?q=emotes">emotes</a></b></p>
-	<ul>
-		<li> from Etsy store</li>
-	</ul>
+		<p><b>July 21</b>, purchased <a href="https://www.etsy.com/search?q=emotes">emotes</a></b></p>
+		<ul>
+			<li> from Etsy store</li>
+		</ul>
 
-	<p><b>July 22</b>, created <b><a href="https://drive.google.com/file/d/1t5By3Kdr7_aZhDxrp9w0nxDUXMMa7ZsW/view?usp=sharing">PreviewEmotes.html</a></b> (<a href="https://drive.google.com/file/d/18f1HOncD2KQzLlR6DEvVyINDKN0_uOAb/view?usp=sharing">pic</a>)</p>
-	<ul>
-		<li> for rapidly choosing tier-specific emotes to submit to twitch</li>
-	</ul>
+		<p><b>July 22</b>, created <b><a href="https://drive.google.com/file/d/1t5By3Kdr7_aZhDxrp9w0nxDUXMMa7ZsW/view?usp=sharing">PreviewEmotes.html</a></b> (<a href="https://drive.google.com/file/d/18f1HOncD2KQzLlR6DEvVyINDKN0_uOAb/view?usp=sharing">pic</a>)</p>
+		<ul>
+			<li> for rapidly choosing tier-specific emotes to submit to twitch</li>
+		</ul>
 
-	<p>created successful <b><a href="https://stackoverflow.com/questions/2450373/set-global-hotkeys-using-c-sharp">global hotkey soundboard app</a></b> alpha test (to be continued...)</p>
-	<ul>
-		<li> for using hotkeys to play soundboard over mic. in-game</li>
-	</ul>
+		<p>created successful <b><a href="https://stackoverflow.com/questions/2450373/set-global-hotkeys-using-c-sharp">global hotkey soundboard app</a></b> alpha test (to be continued...)</p>
+		<ul>
+			<li> for using hotkeys to play soundboard over mic. in-game</li>
+		</ul>
 
-	<p><b>July 23</b>, created <b><a href="https://drive.google.com/file/d/107eNzEqAbeFKiRB0ZVFD5PJODJav56mv/view?usp=sharing">acoustic "cloud" panel</a></b><p>
-	<ul>
-		<li> for ceiling vent</li>
-	</ul>
-	<p>setup secondary bluetooth receiver for secondary pair of wireless earbuds</p>
-	<ul>
-		<li> for instant swap</li>
-	</ul>
-	<p>compressed steam</p>
-	<p>archived projects; freed 45gb of space</p>
+		<p><b>July 23</b>, created <b><a href="https://drive.google.com/file/d/107eNzEqAbeFKiRB0ZVFD5PJODJav56mv/view?usp=sharing">acoustic "cloud" panel</a></b><p>
+		<ul>
+			<li> for ceiling vent</li>
+		</ul>
+		<p>setup secondary bluetooth receiver for secondary pair of wireless earbuds</p>
+		<ul>
+			<li> for instant swap</li>
+		</ul>
+		<p>compressed steam</p>
+		<p>archived projects; freed 45gb of space</p>
 
-	<p><b>July 24</b>, created <b><a href="https://drive.google.com/file/d/1u65NY2H8smjVFTYJ-EvInZjTiRItT6GS/view?usp=sharing">LockTitle for twitter</a></b> (js)</p>
-	<ul>
-		<li> for User JavaScript and CSS extension</li>
-		<li> prevent twitter from changing browser tab title</li>
-	</ul>
-	<p>created <b><a href="https://drive.google.com/file/d/1jDSZZL0LpfFlFrmFhF2gLH7d8lOAyRS0/view?usp=sharing">LockIcon for twitter</a></b> (js)</p>
-	<ul>
-		<li> for User JavaScript and CSS extension</li>
-		<li> prevent twitter from changing browser tab favicon</li>
-	</ul>
-	<p>setup <b><a href="https://x.com/@ark0re">x.com/@ark0re</a></b> (<a href="https://drive.google.com/file/d/1owLCVWbn6QvYMnLnCOzkC6wgbpCnhoMd/view?usp=sharing">pic</a>)</p>
-	<p>setup <b><a href="https://www.youtube.com/@ark0re">youtube.com/@ark0re</a></b> (<a href="https://drive.google.com/file/d/1wZoNEHb0-8xF7EdqdzfuKWm9NMkG86a9/view?usp=sharing">pic</a>)</p>
-	<p>created <b><a href="https://static-cdn.jtvnw.net/jtv_user_pictures/1b5ef86c-c503-416e-8c54-7beb35fa8638-profile_banner-480.jpeg">profile banner</a></b></p>
+		<p><b>July 24</b>, created <b><a href="https://drive.google.com/file/d/1u65NY2H8smjVFTYJ-EvInZjTiRItT6GS/view?usp=sharing">LockTitle for twitter</a></b> (js)</p>
+		<ul>
+			<li> for User JavaScript and CSS extension</li>
+			<li> prevent twitter from changing browser tab title</li>
+		</ul>
+		<p>created <b><a href="https://drive.google.com/file/d/1jDSZZL0LpfFlFrmFhF2gLH7d8lOAyRS0/view?usp=sharing">LockIcon for twitter</a></b> (js)</p>
+		<ul>
+			<li> for User JavaScript and CSS extension</li>
+			<li> prevent twitter from changing browser tab favicon</li>
+		</ul>
+		<p>setup <b><a href="https://x.com/@ark0re">x.com/@ark0re</a></b> (<a href="https://drive.google.com/file/d/1owLCVWbn6QvYMnLnCOzkC6wgbpCnhoMd/view?usp=sharing">pic</a>)</p>
+		<p>setup <b><a href="https://www.youtube.com/@ark0re">youtube.com/@ark0re</a></b> (<a href="https://drive.google.com/file/d/1wZoNEHb0-8xF7EdqdzfuKWm9NMkG86a9/view?usp=sharing">pic</a>)</p>
+		<p>created <b><a href="https://static-cdn.jtvnw.net/jtv_user_pictures/1b5ef86c-c503-416e-8c54-7beb35fa8638-profile_banner-480.jpeg">profile banner</a></b></p>
 
-	<p><b>July 25</b>, created <b><a href="https://drive.google.com/file/d/1v3UKuKQ8kjBRk0ue0AyKipr1HgJpbfy4/view?usp=sharing">ImageCropWebcam command</a></b> (<a href="https://drive.google.com/file/d/1Q0ZtZ79_yFJTGPoxV0gpMuQM9AMKgyUW/view?usp=sharing">bat</a>)</p>
-	<ul>
-		<li>for ffmpeg.exe</li>
-	</ul>
-	<p>created <b><a href="https://drive.google.com/file/d/1Go9TSc4TXt6LSRqfMoO4XU6yG-aYDGmo/view?usp=sharing">stream offline banner</a></b></p>
-	<p>created <b><a href="https://drive.google.com/file/d/13aKHqBvEjUdhuucyv6YcDB6AtE48CAD9/view?usp=sharing">first graphic panel</a></b> ("ArkCard?" #1</p>
-	<ul>
-		<li> for my twitch page</li>
-	</ul>
-	<p>created <b><a href="https://youtu.be/obsQ7GNM8cM">first dance STREAM</a></b> (8 min.)</p>
+		<p><b>July 25</b>, created <b><a href="https://drive.google.com/file/d/1v3UKuKQ8kjBRk0ue0AyKipr1HgJpbfy4/view?usp=sharing">ImageCropWebcam command</a></b> (<a href="https://drive.google.com/file/d/1Q0ZtZ79_yFJTGPoxV0gpMuQM9AMKgyUW/view?usp=sharing">bat</a>)</p>
+		<ul>
+			<li> for ffmpeg.exe</li>
+		</ul>
+		<p>created <b><a href="https://drive.google.com/file/d/1Go9TSc4TXt6LSRqfMoO4XU6yG-aYDGmo/view?usp=sharing">stream offline banner</a></b></p>
+		<p>created <b><a href="https://drive.google.com/file/d/13aKHqBvEjUdhuucyv6YcDB6AtE48CAD9/view?usp=sharing">first graphic panel</a></b> ("ArkCard?" #1)</p>
+		<ul>
+			<li> for my twitch page</li>
+		</ul>
+		<p>created <b><a href="https://youtu.be/obsQ7GNM8cM">first dance STREAM</a></b> (8 min.)</p>
 
-	<p><b>July 26</b>, purchased <b><a href="https://drive.google.com/file/d/14QvNGVFsadCyKAC61DlYsBiu04H5ZZhN/view?usp=sharing">masks</a></b></p>
-	<ul>
-		<li> for dance and acts</li>
-	</ul>
-	<p>setup <b><a href="https://drive.google.com/file/d/1tEPBNtE5QDOuk0zS6ueWW-Cd7ucevIlY/view?usp=sharing">twitch alerts</a></b> (subs, follows, cheers, raids)</p>
+		<p><b>July 26</b>, purchased <b><a href="https://drive.google.com/file/d/14QvNGVFsadCyKAC61DlYsBiu04H5ZZhN/view?usp=sharing">masks</a></b></p>
+		<ul>
+			<li> for dance and acts</li>
+		</ul>
+		<p>setup <b><a href="https://drive.google.com/file/d/1tEPBNtE5QDOuk0zS6ueWW-Cd7ucevIlY/view?usp=sharing">twitch alerts</a></b> (subs, follows, cheers, raids)</p>
 
-	<p><b>July 27</b>, created <b><a href="https://raw.githubusercontent.com/ark0re/log/master/index.html">stream log</a></b> (<a href="https://ark0re.github.io/log/">www</a>) (html/css/js) </p>
-	<ul>
-		<li>for unlimited text</li>
-	</ul>
-	<p>changed twitter logo to x (<a href="https://drive.google.com/file/d/12P2V1TMXNB-8NXcjIzRwuUr2KlhaJrGu/view?usp=sharing">pic</a>)</p>
-	<p>setup acoustic panel #2 on wall (behind me)</p>
-	<p>setup secondary webcam</p>
+		<p><b>July 27</b>, created <b><a href="https://raw.githubusercontent.com/ark0re/log/master/index.html">stream log</a></b> (<a href="https://ark0re.github.io/log/">www</a>) (html/css/js) </p>
+		<ul>
+			<li> for unlimited text</li>
+		</ul>
+		<p>changed twitter logo to x (<a href="https://drive.google.com/file/d/12P2V1TMXNB-8NXcjIzRwuUr2KlhaJrGu/view?usp=sharing">pic</a>)</p>
+		<p>setup acoustic panel #2 on wall (behind me)</p>
+		<p>setup secondary webcam</p>
 
-	<p><b>July 28</b>, burnout</p>
+		<p><b>July 28</b>, burnout</p>
 
-	<p><b>July 29</b>, break</p>
-	<p><b>July 30</b>, break</p>
-	<p><b>July 31</b>, break</p>
+		<p><b>July 29</b>, break</p>
+		<p><b>July 30</b>, break</p>
+		<p>created notes on creating rar self-extracting archives</p>
+		<p><b>July 31</b>, break</p>
 
-	<p><b>August 1</b>, updated <b><a href="https://ark0re.github.io/log/">stream log</a></b></p>
-	<p>purchased <b><a href="https://drive.google.com/file/d/1Ri9ch_yoK5ujFVVF2NFU8S8zy9MDtDSH/view?usp=sharing">144hz monitor</a></b> (<a href="https://drive.google.com/file/d/1AtO1QegfvaDDbIi7myvaaSGn_ZpWZsce/view?usp=sharing">pics</a>)</p>
-	<ul>
-		<li> for blizzard's MMR algorithm to increase my rank in overwatch</li>
-		<li> for seeing genji fly by my screen in overwatch</li>
-	</ul>
-	<p>purchased <a href="https://drive.google.com/file/d/10-PvUNxMa1ZW3UKiT5Yt0D6f9B7yqrPS/view?usp=sharing">punching ball</a></p>
-	<p>purchased <a href="https://drive.google.com/file/d/1fTFOOhaxEofIaSGdvFVNugDJ5Acj2aFk/view?usp=sharing">bob clown</a></p>
+		<p><b>August 1</b>, updated <b><a href="https://ark0re.github.io/log/">stream log</a></b></p>
+		<p>purchased <b><a href="https://drive.google.com/file/d/1Ri9ch_yoK5ujFVVF2NFU8S8zy9MDtDSH/view?usp=sharing">144hz monitor</a></b> (<a href="https://drive.google.com/file/d/1AtO1QegfvaDDbIi7myvaaSGn_ZpWZsce/view?usp=sharing">pics</a>)</p>
+		<ul>
+			<li> for blizzard's MMR algorithm to increase my rank in overwatch</li>
+			<li> for seeing genji fly by my screen in overwatch</li>
+		</ul>
+		<p>purchased <b><a href="https://drive.google.com/file/d/10-PvUNxMa1ZW3UKiT5Yt0D6f9B7yqrPS/view?usp=sharing">punching ball</a></b></p>
+		<p>purchased <b><a href="https://drive.google.com/file/d/1fTFOOhaxEofIaSGdvFVNugDJ5Acj2aFk/view?usp=sharing">bob clown</a></b></p>
 
-	<p><b>August 2</b>, cleaned <b><a href="https://drive.google.com/file/d/1kyAYUR159xTsy_QduY9M0dBEmt9KKI5z/view?usp=sharing">drive D</a></b></p>
-	<ul><li> Use: <a href="https://windirstat.net/">WinDirStat</a> and <a href="https://www.voidtools.com/">Everything</a></li></ul>
-	<p>Re-installed Steam</p>
-	<p>Re-installed Battle.net</p>
-	<p>Updated geforce drivers from 2019 to 2023</p>
+		<p><b>August 2</b>, cleaned <b><a href="https://drive.google.com/file/d/1kyAYUR159xTsy_QduY9M0dBEmt9KKI5z/view?usp=sharing">drive D</a></b></p>
+		<ul><li> Use: <b><a href="https://windirstat.net/">WinDirStat</a></b> and <b><a href="https://www.voidtools.com/">Everything</a></b></li></ul>
+		<p>re-installed Steam</p>
+		<p>re-installed Battle.net</p>
+		<p>updated geforce drivers from 2019 to 2023</p>
 
-	<p><b>August 3</b>, found <b><a href="https://drive.google.com/file/d/1XWfqOQrxHUstOKgfbxz8TqeJXQsF6xxy/view?usp=sharing">mastercomfig</a></b> (by searching "tf2 tweak config")</p>
-	<ul>
-		<li> for Team Fortress 2</li>
-		<li> Use: extract zip to \Team Fortress 2\</li>
-		<li> Set launch options.</li>
-		<li>Note: If you want to simply use the zip I used, then download&nbsp;<a href="https://drive.google.com/file/d/1xzIn_xE1YvBZgZMYOoY4tnac6xokpUB0/view?usp=sharing">my&nbsp;mastercomfig.zip</a><ul><li>Steam TF2 Launch options: <code>-novid -nojoy -nosteamcontroller -nohltv -particles 1 -precachefontchars -noquicktime</code></li></ul></li>
-	</ul>
+		<p><b>August 3</b>, found <b><a href="https://drive.google.com/file/d/1XWfqOQrxHUstOKgfbxz8TqeJXQsF6xxy/view?usp=sharing">mastercomfig</a></b> (by searching "tf2 tweak config")</p>
+		<ul>
+			<li> for Team Fortress 2</li>
+			<li> Use: extract zip to \Team Fortress 2\</li>
+			<li> Set launch options.</li>
+			<li> Note: If you want to simply use the zip I used, then download&nbsp;<b><a href="https://drive.google.com/file/d/1xzIn_xE1YvBZgZMYOoY4tnac6xokpUB0/view?usp=sharing">my&nbsp;mastercomfig.zip</a></b><ul><li>Steam TF2 Launch options: <code>-novid -nojoy -nosteamcontroller -nohltv -particles 1 -precachefontchars -noquicktime</code></li></ul></li>
+		</ul>
 
-	<p><b>August 4</b>, fixed 144hz monitor</p>
-	<ul><li>horizontal lines glitch; resolved by moving certain app windows off to second monitor.</li></ul>
-	<p>updated stream log</p>
+		<p><b>August 4</b>, fixed 144hz monitor</p>
+		<ul>
+			<li> horizontal lines glitch; resolved by moving bright (white) apps off to second monitor.</li>
+			<li> learned to ignore (for $150 savings)</li>
+		</ul>
+		<p>updated stream log</p>
 
-	<p style="text-align:center;margin:2em 0">You've reached the end of this page.</p>
+		<p><b>August 5</b>, break</p>
+
+		<p><b>August 6</b>, created <b><a href="https://drive.google.com/file/d/1XMVE0SFwikjAJll02YV29AjFVsbqIQIH/view?usp=sharing">"Platinum" 4:3 frame UI Overlay</a></b> for youtube</p>
+		<ul>
+			<li> for SEO (rank higher for widescreen videos)</li>
+			<li> (bonus) for effect</li>
+		</ul>
+
+		<p><b>August 7</b>, created <b><a href="https://drive.google.com/file/d/1LKjnrMZFaXk1D4s_W8Ggc3zGNDIZl_eh/view?usp=sharing">ffmpeg command to resize & overlay videos</a></b></p>
+		<ul>
+			<li> for my <b><a href="https://www.youtube.com/watch?v=_Tycl_9aa0c">first youtube video</a></b> (ow1 gameplay)</li>
+		</ul>
+		<p>prepared arkcard #2</p>
+
+		<p><b>August 8</b>, break</p>
+
+		<p><b>August 9</b>, break</p>
+
+		<p><b>August 10</b>, created <b><a href="https://www.youtube.com/@ark0re/videos">overwatch videos</a></b> for youtube</p>
+		<p>updated stream (ambience sounds)</p>
+
+		<p><b>August 11</b>, break</p>
+
+		<p><b>August 12</b>, reviewing file manager apps</p>
+
+		<p><b>August 13</b>, found drama</p>
+
+		<p><b>August 14</b>, found <b><a href="https://twitch.tv/gigi">gigi's stream</a></b></p>
+
+		<p><b>August 15</b>, created <b><a href="https://drive.google.com/file/d/16n2UTGfSFfCJxVNF41ucuykbW3yz0SsA/view?usp=sharing">WebcamAvatar.html</a></b> (<a href="https://drive.google.com/file/d/1ZgkVHkz24Ij4wMyPME3sFt6xsabjqKBd/view?usp=sharing">pic</a>)</p>
+		<ul>
+			<li> alternative to <del><a href="https://www.reddit.com/r/Twitch/comments/cnjtis/gif_avatar_that_speaks_when_there_is_microphone/">dialogueplayer.RAR</a> (OBS Browser window script)</del></li>
+			<li> OBS window > Filters > Chroma Key > Type: Magenta</li>
+		</ul>
+
+		<p><b>August 16</b>, created <b><a href="https://drive.google.com/file/d/13SvzPApY9vSRZgauVzduDfsMtA6nbVNS/view?usp=sharing" title="win11 password reset instructions (inspired by pureinfotech)">win11 password reset instructions</a></b></p>
+		<ul>
+			<li> for fixing Administrator password in windows</li>
+			<li> for "System error 5, Access is denied" issue</li>
+		</ul>
+
+		<p><b>August 17</b>, reinstalled windows on laptop</p>
+		<p>found adept's stream
+
+		<p><b>August 18</b>, reinstalled windows on pc</p>
+		<p>created <b><a href="https://drive.google.com/file/d/1f0nVWyeA4qkk4FA0DwxkkIufZYqZseb9/view?usp=sharing">windows performance tweak</a></b></p>
+
+		<p><b>August 19</b>, created restore script</p>
+		<p>found <b><a href="https://drive.google.com/file/d/1kxTL46_CQMYcfSvax_wuKacccJ9uoYi1/view?usp=sharing">pathed.exe</a></b> command (<a href="http://p-nand-q.com/download/gtools/pathed.html">download</a>)</p>
+
+		<p><b>August 20</b>, setup pc</p>
+
+		<p><b>August 21</b>, created <b><a href="https://drive.google.com/file/d/1oCYZU6mKvqsVXLPtq_zaJaz-Ff9BTUct/view?usp=sharing">override mail.google.com browser icon</a></b> (js) (<a href="https://drive.google.com/file/d/1I1LyWI05wGvmZFLRcAskDcjutfPC1sll/view?usp=sharing">pic</a>)</p>
+		<p>setup animated cheatsheet</p>
+
+		<p><b>August 22</b>, created rename videos script</p>
+
+		<p><b>August 23</b>, archiving files</p>
+
+		<p><b>August 24</b>, backup files</p>
+
+		<p><b>August 25</b>, </p>
+
+		<p><b>August 26</b>, backup files</p>
+		<p>found <b><a href="http://www.puransoftware.com/Puran-Utilities.html">Puran Utilities</a></b></p>
+		<p>found <b><a href="https://sourceforge.net/projects/ultradefrag/files/stable-release/7.1.4/">UltraDefrag</a></b> (<a href="https://sourceforge.net/projects/ultradefrag/files/stable-release/7.1.4/ultradefrag-portable-7.1.4.bin.amd64.zip/download">portable version</a>)</p>
+
+		<p><b>August 27</b>, found <b><a href="http://www.nirsoft.net/">nirsoft tools</a></b></p>
+		<p>found <b><a href="http://www.nirsoft.net/utils/drive_letter_view.html">driveletterview</a></b></p>
+
+		<p><b>August 28</b>, found <b><a href="https://www.majorgeeks.com/files/details/explorerpatcher.html">explorerpatcher</a></b></p>
+
+		<p>defrag</p>
+		<p>shrink c: drive</p>
+		<p>create d: drive partition from c:</p>
+
+		<p><b>August 29</b>, </p>
+		<p><b>August 30</b>, </p>
+		<p><b>August 31</b>, </p>
+
+		<p><b>September 1</b>, </p>
+		<p><b>September 2</b>, </p>
+		<p><b>September 3</b>, </p>
+		<p><b>September 4</b>, </p>
+		<p><b>September 5</b>, </p>
+		<p><b>September 6</b>, </p>
+		<p><b>September 7</b>, </p>
+		<p><b>September 8</b>, </p>
+		<p><b>September 9</b>, </p>
+		<p><b>September 10</b>, </p>
+		<p><b>September 11</b>, </p>
+
+		<p><b>September 12</b>, disabled brave updates</p>
+		<p>added --disable-brave-update --no-default-browser-check to brave-portable shortcut.
+		</p>
+
+		<p><b>September 13</b>, </p>
+		<p><b>September 14</b>, </p>
+		<p><b>September 15</b>, </p>
+		<p><b>September 16</b>, </p>
+		<p><b>September 17</b>, </p>
+		<p><b>September 18</b>, </p>
+		<p><b>September 19</b>, </p>
+
+		<p><b>September 20</b>, found <b><a href="https://www.youtube.com/watch?v=dykc9YC9Z6U">hack protection video</a></b>
+
+		<p><b>September 21</b>, </p>
+		<p><b>September 22</b>, </p>
+		<p><b>September 23</b>, </p>
+		<p><b>September 24</b>, </p>
+		<p><b>September 25</b>, </p>
+		<p><b>September 26</b>, </p>
+		<p><b>September 27</b>, </p>
+
+		<p><b>September 28</b>, created new quake3 sounds</p>
+		<ul>
+			<li> compared quake3 sound packs</li>
+			<li> create comparison script/tool</li>
+			<li> edit quake3 sounds</li>
+			<li> setup maplist for ctf</li>
+		</ul>
+
+		<p><b>September 29</b>, found <b><a href="https://www.gametracker.com/server_info/91.216.250.42:27015/">tf2 big (100man) server</a></b></p>
+
+		<p><b>September 30</b>, rest</p>
+
+		<p><b>October 1</b>, created rar index script/tool</p>
+		<ul>
+			<li> for automatically extracting and parsing the list of files from rar files</li>
+		</ul>
+
+		<p><b>October 2</b>, created <b><a href="https://drive.google.com/file/d/1euYePJzGZ1x9gMBIYLCjPjBdhNwHHOFn/view?usp=sharing">ArkBlackWhite vscode theme</a></b> (<a href="https://drive.google.com/file/d/1lS4oXw5rdvn5raUSLbAdyxQ446mE0ru0/view?usp=sharing">download</a>)
+		<ul>
+			<li> for eye strain </li>
+		</ul>
+		<p>installed <b><a href="https://code.visualstudio.com/api/working-with-extensions/publishing-extension">vsce package</a></b></p>
+		<ul>
+			<li> using <code>npm install -g @vscode/vsce</code></li>
+		</ul>
+
+		<p>created <b><a href="https://drive.google.com/file/d/1sKQJdzl0t-yrMKQhY86f7nMQLm_ag8WE/view?usp=sharing">custom cmd shortcut w/ custom font size</a></b> (<a href="https://drive.google.com/file/d/1UfS3s3XXjjIokFLM9o6J_BrOKYIqCD6M/view?usp=sharing">pic</a>)</p>
+		
+		<ul>
+			<li> Example: <b><a href="https://drive.google.com/file/d/1b4gnmBhl6ybZC7xqRgyhlNFI-H33B5xB/view?usp=sharing">Command property: FontSize</a></b> (under <a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc978570(v=technet.10)?redirectedfrom=MSDN">Console</a>)
+				<ul>
+					<li> refer to <b><a href="https://drive.google.com/file/d/11UZQdZLLOBc4aj6w9RnUU8Dpc_-ZZWHW/view?usp=sharing">Registry Type Values</a></b> (<a href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-rprn/25cce700-7fcf-4bb6-a2f3-0f6d08430a55">link</a>) (e.g. REG_DWORD - 0x00000004 - A 32-bit number)
+					</li>
+					<li> using <b><a href="https://www.binaryhexconverter.com/decimal-to-hex-converter">this DecToHex converter</a></b>.
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<p><b>October 3</b>, variety</p>
+		<ul>
+		<li> parse rar list CLI</li>
+		<li> parse 7z list</li>
+		<li> rumble</li>
+		<li> xvid</li>
+		</ul>
+
+		<p><b>October 4</b>, </p>
+		<p><b>October 5</b>, </p>
+		<p><b>October 6</b>, </p>
+		<p><b>October 7</b>, </p>
+		<p><b>October 8</b>, </p>
+		<p><b>October 9</b>, </p>
+
+		<p><b>October 10</b>, <b><a href="https://drive.google.com/file/d/15PVNJbgnzXsmE7XYJ_mnwmimWYajiQeZ/view?usp=sharing">changed accent color</a></b></p>
+		<p><b><a href="https://drive.google.com/file/d/1zF7zAXInP4qljC8jjYDrvJckIk8fBh3j/view?usp=sharing">changed offline banner</a></b></p>
+
+		<p><b>October 11</b>, found <b><a href="https://github.com/awesometoolbox/otf2ttf">otf2ttf</a></b></p>
+
+		<p><b>October 12</b>,</p>
+
+		<p><b>October 13</b>,</p>
+
+		<p><b>October 14</b>, fixed stream display to support night time, and thumbnail embeds</p>
+
+		<p><b>October 15</b>, found <a href="found https://obsproject.com/forum/plugins/">obs plugins</a></p>
+		<p>fixed webcam display to support night time, and thumbnail embeds.</p>
+		<p>fixed foot stool (amazon) by ripping off top cushion, and covering base surface with packing tape.</p>
+		<p>found <b><a href="https://eartrumpet.app/">eartrumpet</a></b></p>
+		<ul>
+			<li> set hotkey: <code>Ctrl+Shift+M</code> for flyout.</li>
+			<li> created these you can use:
+				<ul>
+					<li> <a href="https://drive.google.com/file/d/1-ia2G1Yh9qlZVwrMsFdZuc7_KitgIlwj/view?usp=sharing">EarTrumpet.2.3.0.0-Portable.rar</a></li>
+					<li> <a href="https://drive.google.com/file/d/1cjbd6937Q93zZ96Q-aWDJM2oEh9mJx5Z/view?usp=sharing">EarTrumpet.2.3.0.0-Portable.exe</a></li>
+				</ul>
+			</li>
+		</ul>
+		<p>found <b><a href="https://www.nirsoft.net/utils/volumouse.html">volumouse</a></b></p>
+		<ul>
+			<li> set hotkey: <code>Alt+MouseWheel</code> to change volume.</li>
+		</ul>
+		<p>revisit winamp</p>
+		<p>created auto3</p>
+		<p>changed gitbash prompt by adding line (to &lt;USERPROFILE>/.bashrc file): <code>export PS1='\[\033[32m\]\u@\[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]\n$'</code></p>
+		<p>changed gitbash prompt (no dollar sign): <code>export PS1='\[\033[32m\]\u \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\] > '</code></p>
+
+		<p><b>October 16</b>, </p>
+		<p><b>October 17</b>, </p>
+		<p><b>October 18</b>, </p>
+		<p><b>October 19</b>, </p>
+
+		<p><b>October 20</b>, found brave 1.31</p>
+		<ul>
+			<li> for <code>--autoplay-policy=no-user-gesture-required</code> target param (will fix media autoplay (removes user gesture requirement))</li>
+		</ul>
+
+		<p><b>October 21</b>, </p>
+
+		<p><b>October 22</b>, created quick2.exe</p>
+		<p>setup snippets.exe + .ini</p>
+		<p>archive snippets.html</p>
+
+		<p><b>October 23</b>, </p>
+		<p><b>October 24</b>, created new panels</p>
+		<p><b>October 25</b>, updated stream log</p>
+
+		<p style="text-align:center;margin:2em 0">You've reached the end of this page.</p>
+	</div>
+	<div id="extra">
+	</div>
 </body>
 <script>
-	document.body.innerHTML = document.body.innerHTML + `
-	<div class="toolbar">
-	    <button tabindex="2" type="button" onclick="window.scrollTo(0,0);">⇤</button>
-	    <button tabindex="3" type="button" onclick="window.scrollTo(0,window.pageYOffset-window.innerHeight);">⇠</button>
-	    <button tabindex="4" type="button" onclick="window.scrollTo(0,window.pageYOffset+window.innerHeight);">⇢</button>
-	    <button tabindex="5" type="button" onclick="window.scrollTo(0,9999999);">⇥</button>
+	extra.innerHTML = `
+	<div class="wrapper" style="height:100vh">
+		<div class="toolbar">
+			<button tabindex="2" type="button" onclick="window.scrollTo(0,0);">⇤</button>
+			<button tabindex="3" type="button" onclick="window.scrollTo(0,window.pageYOffset-window.innerHeight);">⇠</button>
+			<button tabindex="4" type="button" onclick="window.scrollTo(0,window.pageYOffset+window.innerHeight);">⇢</button>
+			<button tabindex="5" type="button" onclick="window.scrollTo(0,9999999);">⇥</button>
+		</div>
 	</div>
 	`;
 </script>
-<script>document.body.innerHTML = '<div>' + document.body.innerHTML + '</div>';</script>
+
 <script>
 	var u = null;
 	document.querySelectorAll('b').forEach(function(el) {
