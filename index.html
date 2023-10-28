@@ -73,8 +73,11 @@
 			box-shadow: 10px -3px 15px #000, 10px -3px 15px #000;
 		}
 		@media print {
+			* { color: #000; }
 			body { text-shadow: none; }
-			* { filter: saturate(0); }
+			img { box-shadow: none; }
+			div.toolbar { display: none; }
+			@page { size: auto; margin: 0; }
 		}
 	</style>
 </head>
