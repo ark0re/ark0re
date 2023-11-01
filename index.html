@@ -31,7 +31,6 @@
 		html::-webkit-scrollbar { width: 16px; height: 16px; }
 		html::-webkit-scrollbar-thumb { background: #426; border-radius: 16px; box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25); }
 		html::-webkit-scrollbar-track { background: #181122; }
-
 		.wrapper {
 			max-width: 22em;
 			margin: 0 auto;
@@ -47,30 +46,94 @@
 			pointer-events: none;
 		}
 		div.toolbar {
-			right: -8em;
-			top: 50%;
-			margin-top: -3em;
-			transform: rotate(90deg);
 			position: absolute;
+			right: -2.3em;
+			top: 50%;
+			margin-top: -12em;
 			pointer-events: all;
 		}
+
+		div.toolbar { right: -0.3em; }
+		@media (min-width: 320px) and (max-width: 1200px) {
+			div.toolbar {
+				right: calc(-0.3em + (-2.3 * 24) * ((100vw - 320px) / (1200 - 320)));
+			}
+		}
+		@media (min-width: 1200px) {
+			div.toolbar { right: -2.3em; }
+		}
+
+
 		div.toolbar > button {
 			display: block;
-			float: left;
-			min-width: 50px;
-			min-height: 50px;
+			width: 2em;
+			height: 2em;
 			padding: 0.2em 0.4em;
 			border-radius: 0.2em;
 			background: rgba(15, 13, 22,0.8);
 			color: #eee;
 			font-size: 2rem;
 			border: none;
-			margin: 0.1em;
+			margin: 0.2em;
 			border-width: 2px;
-			border-style: outset;
-			border-color: buttonborder;
+			border-left: 2px solid #5A4587;
+			border-bottom: 2px solid #5A4587;
+			border-top: 2px solid #9370DB;
+			border-right: 2px solid #9370DB;
 			border-image: initial;
+			background-blend-mode: soft-light;
 			box-shadow: 10px -3px 15px #000, 10px -3px 15px #000;
+			line-height: 1;
+
+			background-position: 50% 50%;
+			background-size: auto 0.65em;
+			background-repeat: no-repeat;
+			max-width: 3rem;
+			max-height: 3rem;
+		}
+		div.toolbar > button:hover,
+		div.toolbar > button:active {
+			background-color: rgba(27, 43, 30, 0.8);
+			background-blend-mode: unset;
+
+			border-left: 2px solid #008533;
+			border-bottom: 2px solid #008533;
+			border-top: 2px solid #24dd52;
+			border-right: 2px solid #24dd52;
+			color: #5f6;
+		}
+		div.toolbar > button:hover {
+			transform: scale(1.05);
+			transition-duration: 0.05s;
+			transition-property: transform;
+		}
+		div.toolbar > button:active {
+			transform: scale(1);
+		}
+		div.toolbar > button.forward { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDYwNzE4RUQ3ODZCMTFFRTkyMTlGOTdBRkFFRkY0NkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDYwNzE4RUU3ODZCMTFFRTkyMTlGOTdBRkFFRkY0NkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NjA3MThFQjc4NkIxMUVFOTIxOUY5N0FGQUVGRjQ2QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NjA3MThFQzc4NkIxMUVFOTIxOUY5N0FGQUVGRjQ2QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pmvu2r0AAAAGUExURf///////1V89WwAAAACdFJOU/8A5bcwSgAAAZ1JREFUeNrs2ktywzAMA1Dg/pfOBUSZHzDaoMsOCb1JXVmmAz7+gQEGGGCAAQYYYIABBhhggAEGGHD63Y7qHItT4YogiMWxcEEQxeJcKBeEsQgKxYI4FlGhVHCJRVgoFNxiERfKBNdYXApFgnssboUSwUcsroUCwVfsFwAr61cA2Fgf6WtgKEhEgouCTCC4J0jFgWuCXBi4JUhGgUuCbBC4I0jHgCuCfAi4IShEgAuCSgCoF5TaQbmg1gyqBcVWUCyoNoJaQbkNlArqTVCGtVqkH2fjQ4Pygm790YRbSuuyhW5Tb/7byG6rzY0Doo2lv3GJjpbtrRuSzX1y61DcXiY3z1zRfYHR6SFbdlljeHoZP+UOz2/5wmCd8flxfNIcnqArpRvrU3HaHz3D1Ir161PzxDV4iqyWq9en6qm3/Rxfb9CuT93koTlJ6bQo16dy+tOaZfWalLM03QSOfwRQOM1UTUH5ZwBl82TNJJoPABRN9BVvA/gIQMk7FY4FfAig4K3W435/h8QAAwwwwAADDDDAAAMMMMAAA94DfgIMAC5BNvE0XyK1AAAAAElFTkSuQmCC); }
+		div.toolbar > button.fforward { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0Y4Nzk4N0Q3ODZCMTFFRUE0NkZCREYxMTA4RkU4QkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0Y4Nzk4N0U3ODZCMTFFRUE0NkZCREYxMTA4RkU4QkUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozRjg3OTg3Qjc4NkIxMUVFQTQ2RkJERjExMDhGRThCRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozRjg3OTg3Qzc4NkIxMUVFQTQ2RkJERjExMDhGRThCRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PozYGokAAAAGUExURf///////1V89WwAAAACdFJOU/8A5bcwSgAAAg9JREFUeNrsmkFywzAMA4H/f7ofsGSRWMY9KGcKu5O6Sgah/PFLV+AKXIErcAX+o4BmrJ5j9TQ4YrCI1ePggMEqVs+DuMEyVotB2GAdq9UgarCJ1XIQNNjFaj2IGWxjtRmEDPax2g0iBi+x2g4CBm+xbwIa4VcENMHX8TMQGhxEyoMGJ4HynMFRnDxmcBYmTxkcRslDBqdB8ozBcYw8YnAeIk8YFCLkAYNKgMwblI7LuEHtsEwbFI/KsEH1oMwalI/JqEH9kMiw1hH07Wy8aSIf6NYfDbxSWo+tuEu9+W+Dfaw2Lw5BF0v/4oK+WravbiGXe/LRcVBnvcYffv/tt2QvgFN+0JJtEef8oCXbQCr8oCVbYmr8oCVT7TXQkkH8oCWD+EFLBvGDlgziBy0ZxA9aMogftGQMP2nJYH6jJWP5nZYM5bdaMpLfa8lAfrMl4/jdlgzjt1syit9vySB+0JIx/KQlQ/hRS0bws5YM4IctWc5PW7KYf1uy25Ldluy2ZLclM/IjTPIT09kQ0ZIlAkRLlgnkLVkqkLZkuUDWkhECnuFXdkpH+CZ+lI9WDWrDPN/MYkSw7FEdp/mmllPa6zb1Ayzf3IJQc+Gpc4Tkm1zSaq2c9Q6RK2/GDPxDAWN8Y8uK/rGAsbVPIwb+QMDQ4q0BA38kYGT12bGBPxQwsHzuj19X4ApcgStwBT4X+BNgAGaqLXflRkilAAAAAElFTkSuQmCC); }
+		div.toolbar > button.end { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MkU5OEE5QzI3ODZCMTFFRTgxQjc5QzU5RUJEN0Q3QzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MkU5OEE5QzM3ODZCMTFFRTgxQjc5QzU5RUJEN0Q3QzIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyRTk4QTlDMDc4NkIxMUVFODFCNzlDNTlFQkQ3RDdDMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyRTk4QTlDMTc4NkIxMUVFODFCNzlDNTlFQkQ3RDdDMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PthT6lIAAAAGUExURf///////1V89WwAAAACdFJOU/8A5bcwSgAAAUFJREFUeNrsmksShCAMBfH+l561oyj5vWjZrK3qXiAJvIyteQ0EEFj9zroQQAABBDiKqQUIIIAAAgggQEOCAJsQAQQQQAABBBBA4IUCQ7keKbC18Hd7oIO/34QN/P+/QI0//oZq/vEcEPNPDiIt/+wklPLPj2IdflYLdPxZMZLxp9VQxZ+XYxH/qh9Q4K8bEgX/uiMS8G9asnr+XU9Yzr9tSqv5C11xKX6pLS/lL90LKvlrF5NC/uLNqI7/osCiiG/IC2r4lsCihG9KTCr4tsimgG/NjLLx9tAqm29PzZL5jtgul+/JDVP5vuAyD+9NTvP43ug2je/OjrP4/vA6iR9JzzPwsfg+gx+bH0jgBwcY4vzoBEWY/7gRjuan2u7H6vbn+u7AYiCAAAIIIIAAAt0C23cEnjzA0N6WI/BBgZ8AAwBm4SRm7nsZRAAAAABJRU5ErkJggg==); }
+		div.toolbar > button.backward { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTVGNUE1NDI3ODZDMTFFRUEwQzc5NDVBMEIyRUMzRTEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTVGNUE1NDM3ODZDMTFFRUEwQzc5NDVBMEIyRUMzRTEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBNUY1QTU0MDc4NkMxMUVFQTBDNzk0NUEwQjJFQzNFMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBNUY1QTU0MTc4NkMxMUVFQTBDNzk0NUEwQjJFQzNFMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pn+/IK0AAAAGUExURf///////1V89WwAAAACdFJOU/8A5bcwSgAAAWpJREFUeNrs2UGSwzAMA8HB/z+9TwhFAuXDIueI0644llJBH78ooIACCiiggAIKKKCAAgoooIACvr6A4wD49grgLODcPwq4928CDP2TAEf/IsDSPwjw9PcCTP21AFd/K8DWXwrw9XcCjP2VAGd/I8DaXwjw9t8FmPvPAtz9VwH2/qMAf/9NQKD/JCDRfxFw7J/3BY79887EtX8VcO4fBRxuv/kbboDB+IMAR/8iwNI/CPD09wJM/bUAV38rwNZfCvD1dwLkHLdZYr2cxSKs/c3H5u2/L8Tcf//quPuvi7H3Xx9f/v7bAAL9ty0k0X8ZQqT/so1n+vNBhPrzo1SqPx1GrD89zub6s4EE+7OfFMn+ZOhPgJQQzAFSRDC+B6SIYPwtkCKC8XNAigjGT0IpIhjvBVJEMN4NpYhgfB6QIoLxiUiKCMZnQikiGJ+KpYjA8Y+Jn1VAAQUUUEABBRRQQAEFFFBAAf8e8CfAALTDNvKiZRYfAAAAAElFTkSuQmCC); }
+		div.toolbar > button.fbackward { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUExRjY0NkI3ODZDMTFFRTkxMTFDMUU0MkFCNDY4MTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUExRjY0NkM3ODZDMTFFRTkxMTFDMUU0MkFCNDY4MTciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QTFGNjQ2OTc4NkMxMUVFOTExMUMxRTQyQUI0NjgxNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QTFGNjQ2QTc4NkMxMUVFOTExMUMxRTQyQUI0NjgxNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pta8Sx0AAAAGUExURf///////1V89WwAAAACdFJOU/8A5bcwSgAAAdRJREFUeNrs2NtKxEAYBOHK+7+0iIhHcKa7/gRh9lImW9/iHkJzPfzgAA7gAA7gAP45AHgUALWAul8K6PudAKFfCTD6jQClXwhw+rkAqR8LsPqpAK0fCvD6mQCxHwkw+4kAtR8IcPv7AuT+tgC7vytA728K8Pt7Agb6WwIm+jsCRvobAsr+1Qoo+1croO23Aup+KaDvdwKEfiXA6DcClH4hwOnnAqR+LMDqpwK0fijA62cCLvPpkkvUlxNcRPdUv/1h89/W9lsBdb8U0Pc7AUK/EmD0GwFKvxDg9HMBUj8WYPVTAVo/FOD1MwFiPxJg9hMBaj8Q4Pb3BThv7fwD8xegXsnWAZfUX7lo+VOgrGTLn4KfR6WVbPl74PtRbSVb/ib8elRcyZZ/Cz4fVVey5V/Dj6PySrZ8P/B+VF/Jlu+I3o4OrGTL94SvR0dWsuW74rOSnZXsrGRnJTsrWfemvnclEy5E7t+6kikC9P5tK5kkYKB/y0qmCRjpj69kooCh/uhKpgoY64+tZLKAwf7ISqYLNlcyS5CuZJogXMk0QbiSaYJwJdME4UqmCcKVTBOEK5kmCFcyTRCuZJogXMk0QbiSaYJwJZt9HMABHMABHMDjgBcBBgDumC13J7DAiQAAAABJRU5ErkJggg==); }
+		div.toolbar > button.start { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTU0QUMwMkY3ODZDMTFFRUI3OUU4NjEwQ0Q3MUFFODkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTU0QUMwMzA3ODZDMTFFRUI3OUU4NjEwQ0Q3MUFFODkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5NTRBQzAyRDc4NkMxMUVFQjc5RTg2MTBDRDcxQUU4OSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5NTRBQzAyRTc4NkMxMUVFQjc5RTg2MTBDRDcxQUU4OSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqLad8AAAAGUExURf///////1V89WwAAAACdFJOU/8A5bcwSgAAATlJREFUeNrs2UsWAiEMRNH0/jft2NP8AqmEo4+Zs9tKQ6W0p3gZAABfH3JWF2BWICgBWBtgAAAAAAAAAIBqwPM/gGszYQ7hx+aC9xPlAlrfaSag/avmAXr7KgvQ39kpgPHLpQfMXm81YH7AaAErR5wSsHbIygDr57wG4LlpFADfXRcP8N620QD/fR8K2IsccYDd0BMF2I9dMYCT4BcBOIue54DT8HsIiMjfJ4CYCWAfEDWD7ALipqA9QOQctgGIHgW9gPhh1AdQjMMegGYgXweoKoFVgK6UWAJoe5E5QN3MzAD6bmgMyGinRoCcfqwLyKvo2oDMkrAFyK0p34DsovSyqra6rK6u66v/MTErEVwEuHo0AwAAAAAAAAAAACBcANiEAAAAAAAAAHmAQAIAAAAAHMUAygEfAQYA+10kZoBZf24AAAAASUVORK5CYII=); }
+		div.toolbar > button i {
+			display: inline-block;
+			font-style: normal;
+			transform: rotate(90deg);
+			vertical-align: text-bottom;
+
+			display: none;
+
+		}
+		div.toolbar > button span {
+			display: inline-block;
+			font-size: 0.3em;
+			position: absolute;
+			margin-top: 19px;
+			margin-left: -4px;
+
+			display: none;
+
 		}
 		@media print {
 			* { color: #000; }
@@ -516,10 +579,12 @@
 	extra.innerHTML = `
 	<div class="wrapper" style="height:100vh">
 		<div class="toolbar">
-			<button tabindex="2" type="button" onclick="window.scrollTo(0,0);">⇤</button>
-			<button tabindex="3" type="button" onclick="window.scrollTo(0,window.pageYOffset-window.innerHeight);">⇠</button>
-			<button tabindex="4" type="button" onclick="window.scrollTo(0,window.pageYOffset+window.innerHeight);">⇢</button>
-			<button tabindex="5" type="button" onclick="window.scrollTo(0,9999999);">⇥</button>
+			<button tabindex="2" type="button" class="start" onclick="window.scrollTo(0,0);"><i>⇤</i> <span></span></button>
+			<button tabindex="3" type="button" class="fbackward" onclick="window.scrollTo(0,window.pageYOffset-(window.innerHeight*2));"><i>⇠</i> <span>x2</span></button>
+			<button tabindex="4" type="button" class="backward" onclick="window.scrollTo(0,window.pageYOffset-window.innerHeight);"><i>⇠</i> <span></span></button>
+			<button tabindex="5" type="button" class="forward" onclick="window.scrollTo(0,window.pageYOffset+window.innerHeight);"><i>⇢</i> <span></span></button>
+			<button tabindex="6" type="button" class="fforward" onclick="window.scrollTo(0,window.pageYOffset+(window.innerHeight*2));"><i>⇢</i> <span>x2</span></button>
+			<button tabindex="7" type="button" class="end" onclick="window.scrollTo(0,9999999);"><i>⇥</i> <span></span></button>
 		</div>
 	</div>
 	`;
@@ -536,7 +601,7 @@
 	
 	var t = new Date(u.textContent.trim()+', '+(new Date()).getFullYear());
 	document.querySelector('h1 + div').innerHTML = '(updated '+timeSince(t)+' ago)';
-	document.querySelector('button[tabindex="5"]').onclick = function() { location.href = '#end'; }
+	document.querySelector('button[tabindex="7"]').onclick = function() { location.href = '#end'; }
 	
 	function timeSince(date) {
 		var seconds = Math.floor((new Date() - date) / 1000);
