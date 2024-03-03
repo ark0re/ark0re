@@ -16,7 +16,7 @@
 		@media (min-width: 1200px) {
 			html { font-size: 28px; }
 		}
-		body { color: #efeff1; background:#0e0e10; font-family: Arial, Sans-serif; line-height: 1.4; text-shadow: 3px 10px 15px #000, 3px 10px 15px #000; }
+		body { color: #efeff1; background:#0c0c0f; font-family: Arial, Sans-serif; line-height: 1.4; text-shadow: 3px 10px 15px #000, 3px 10px 15px #000; }
 		a[href],a[href]:link,a[href]:visited { color: #bf94ff; text-decoration: none; }
 		a[href]:hover,a[href]:active { color: #5f6; }
 		a[href]:hover { text-decoration: underline; }
@@ -25,13 +25,13 @@
 			max-width: 100%;
 			height: auto !important;
 			background: #0C0C0C url(data:image/gif;base64,R0lGODlhKwALAPEAAAAAAP///3x8fP///yH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAKwALAAACMoSOCMuW2diD88UKG95W88uF4DaGWFmhZid93pq+pwxnLUnXh8ou+sSz+T64oCAyTBUAACH5BAkKAAAALAAAAAArAAsAAAI9xI4IyyAPYWOxmoTHrHzzmGHe94xkmJifyqFKQ0pwLLgHa82xrekkDrIBZRQab1jyfY7KTtPimixiUsevAAAh+QQJCgAAACwAAAAAKwALAAACPYSOCMswD2FjqZpqW9xv4g8KE7d54XmMpNSgqLoOpgvC60xjNonnyc7p+VKamKw1zDCMR8rp8pksYlKorgAAIfkECQoAAAAsAAAAACsACwAAAkCEjgjLltnYmJS6Bxt+sfq5ZUyoNJ9HHlEqdCfFrqn7DrE2m7Wdj/2y45FkQ13t5itKdshFExC8YCLOEBX6AhQAADsAAAAAAAAAAAA=) 50% 50%/43px 11px no-repeat;
-			box-shadow: 3px 10px 15px #000, 3px 10px 15px #000;
 		}
 		hr { border: 3px solid rgba(0, 0, 0, 0.05); border-radius: 0.5em; margin: 3em 0; }
 		h1 { font-size: calc(1rem * 2); }
 		h1 a {
 			display: block;
 		}
+		h1 span { position: absolute; top: -9999px; left: -9999px; }
 		code { color: #6c6; background: #080F08; }
 		html::-webkit-scrollbar { width: 16px; height: 16px; }
 		html::-webkit-scrollbar-thumb { background: #426; border-radius: 16px; box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25); }
@@ -51,14 +51,16 @@
 			pointer-events: none;
 		}
 		p.archive + div { display: none; }
+
 		p.archive a[href],
 		p.archive a[href]:link,
-		p.archive a[href]:visited { color: inherit; }
-		p.archive a[href]:hover { text-decoration: underline; }
+		p.archive a[href]:visited { text-decoration: none; }
+
+		p.archive a[href]:hover span { text-decoration: underline; }
 		p.archive a[href]:hover,
 		p.archive a[href]:active,
 		p.archive a[href]:hover::after { color: #5f6; }
-		p.archive a::after { color: #bf94ff; display: inline; margin-left: 0.2em; content: "+"; }
+		p.archive a::after { color: #bf94ff; display: inline; margin-left: 0.2em; content: "+"; text-decoration: none; }
 		p.archive.open + div { display: block; }
 		p.archive.open a::after { display: none; }
 		div.toolbar {
@@ -157,20 +159,22 @@
 </head>
 
 <body>
-	<div class="wrapper" style="background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
+	<div class="wrapper" style="box-shadow: 3px 10px 15px #000, 3px 10px 15px #000; padding-bottom: 1px; background-color: #0e0e10; background-image: radial-gradient(ellipse at center, #1c191f 0%, transparent 100%); /* background-attachment: fixed; */">
 		<h1>
-			<a href="https://drive.google.com/file/d/1LR2zxvVsQ0eTkLr-nXaWSZP1qmZ0Zs2Y/view?usp=sharing" title="Arkore banner.">
-				<img src="index.jpg" alt="Thanks for watching Arkore" width="729" height="348">
-			</a>
 			<a href="https://www.twitch.tv/arkore" title="Arkore's Twitch Stream">
+				<img src="index.jpg" alt="Arkore's Stream Log" width="729" height="348">
 				<span>Twitch.Tv/Arkore</span>
 			</a>
 		</h1>
 		<div style="text-align:center;margin:1em 0;color:#C93">&nbsp;</div>
 
+		<a href="https://ark0re.github.io/log2/" title="Arkore's Stream Tools">
+			<img src="sub.jpg" alt="Arkore's Stream Tools" width="729" height="103">
+		</a>
+
 		<p>found <b><a href="https://www.youtube.com/watch?v=I5CzBJK4dHo">SoundBoard over Mic solution</a></b></p>
 
-		<p class="archive"><b><a href="#2023">Archive 2023</a></b></p>
+		<p class="archive"><b><a href="#2023"><span>Archive 2023</span></a></b></p>
 		<div>
 			<p><b>July 12</b>, created <b><a href="https://drive.google.com/file/d/1gFull2pdkZZg9Q4uwp8MMW7jQB-tACyv/view?usp=sharing">autoexec.cfg</a></b></p>
 			<ul>
